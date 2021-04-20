@@ -1,0 +1,8 @@
+coverage
+.vscode/
+build/
+node_modules
+.gitignore
+.prettierrc
+jest.config.ts
+tsconfig.json
