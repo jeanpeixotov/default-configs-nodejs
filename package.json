@@ -1,0 +1,49 @@
+{
+  "name": "x",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "make-badges": "yarn jest-badges-readme",
+    "lint": "yarn eslint . --fix",
+    "local": "sls offline --stage=local",
+    "debug": "node --inspect node_modules/serverless/bin/serverless offline -s dev",
+    "test": "cross-env ENV=test jest --detectOpenHandles --colors --testPathIgnorePatterns bin",
+    "test:dev": "jest --watch"
+  },
+  "author": "Deepwater Team <@dasa.io>",
+  "husky": {
+    "hooks": {
+      "pre-commit": "concurrently -r \"yarn lint\" \"yarn test:unit --coverage\" && node_modules/.bin/jest-badges-readme && git add 'README.md'",
+      "post-merge": "yarn"
+    }
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.4.2",
+    "concurrently": "^5.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^24.3.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-sonarjs": "^0.6.0",
+    "husky": "^4.2.5",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "jest-extended": "^0.11.5",
+    "jest-spy-object": "^1.4.0",
+    "nock": "^13.0.5",
+    "prettier": "^2.2.1",
+    "serverless": "^1.74.1",
+    "serverless-offline": "^6.8.0",
+    "serverless-prune-plugin": "^1.4.3",
+    "cross-env": "^7.0.2"
+  },
+  "dependencies": {
+  }
+}
